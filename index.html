@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#08090d" />
+  <meta name="description" content="Rambo Reporter — latest cricket news, match analysis, pitch reports and match predictions. Join our Telegram channel." />
+  <title>Rambo Reporter | Cricket News & Analysis</title>
+  <style>
+    :root { color-scheme: dark; --gold:#ffc928; --red:#ed2636; --muted:#b9bac4; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-height:100vh; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:#fff; background:radial-gradient(ellipse at 50% 8%,#172b49 0%,#0b101c 42%,#07080c 78%); display:grid; place-items:center; padding:28px 16px; overflow-x:hidden; }
+    body:before, body:after { content:""; position:fixed; width:340px; height:340px; border-radius:50%; filter:blur(90px); opacity:.16; pointer-events:none; }
+    body:before { background:#ffbd20; top:-180px; left:-130px; } body:after { background:#e21f36; bottom:-190px; right:-100px; }
+    .wrap { width:min(100%,560px); text-align:center; position:relative; z-index:1; }
+    .logo-frame { width:min(72vw,280px); aspect-ratio:1; margin:0 auto 22px; border-radius:50%; padding:5px; background:linear-gradient(135deg,#fff0a0,#ffbf19 45%,#e43a23); box-shadow:0 0 38px #ffc92835,0 18px 55px #0009; }
+    .logo-frame img { width:100%; height:100%; object-fit:cover; border-radius:50%; display:block; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; border:1px solid #ffc92855; color:#ffdc70; background:#ffc92810; border-radius:99px; padding:8px 14px; font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase; }
+    h1 { margin:17px 0 8px; font-size:clamp(34px,8vw,54px); line-height:1; letter-spacing:-1.8px; font-weight:950; text-transform:uppercase; }
+    h1 span { color:var(--gold); }
+    .tagline { margin:0 auto; color:#e5e6eb; font-size:16px; line-height:1.6; max-width:420px; }
+    .features { display:flex; flex-wrap:wrap; justify-content:center; gap:9px; margin:24px 0 25px; }
+    .feature { border:1px solid #ffffff20; background:#ffffff0a; border-radius:999px; padding:9px 13px; font-size:12px; color:#e8e8ed; }
+    .feature b { color:var(--gold); margin-right:5px; }
+    .join { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; min-height:58px; border-radius:14px; text-decoration:none; color:#17120a; font-weight:950; font-size:16px; letter-spacing:.4px; background:linear-gradient(100deg,#ffe27b,#ffc21b 55%,#ff9d16); box-shadow:0 10px 30px #ffb91e35; transition:transform .2s,filter .2s; }
+    .join:hover { transform:translateY(-2px); filter:brightness(1.08); }
+    .timer { color:var(--muted); font-size:13px; margin:17px 0 0; }
+    .timer strong { color:#fff; font-variant-numeric:tabular-nums; }
+    .progress { height:4px; background:#ffffff18; border-radius:10px; overflow:hidden; margin:12px auto 0; max-width:260px; }
+    .bar { height:100%; width:0%; background:linear-gradient(90deg,var(--red),var(--gold)); border-radius:10px; }
+    .note { color:#777d8c; font-size:11px; line-height:1.5; margin:22px auto 0; max-width:390px; }
+    .note a { color:#aeb6c8; }
+    @media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="logo-frame"><img src="logo.png" alt="Rambo Reporter cricket channel logo" /></div>
+    <div class="eyebrow">🏏 &nbsp; Your Cricket Update Hub</div>
+    <h1>RAMBO <span>REPORTER</span></h1>
+    <p class="tagline">Cricket ki har khabar, har match par nazar! Get the latest updates, sharp analysis and match insights.</p>
+    <div class="features">
+      <div class="feature"><b>📰</b> Cricket News</div>
+      <div class="feature"><b>📊</b> Match Analysis</div>
+      <div class="feature"><b>🎯</b> Predictions</div>
+      <div class="feature"><b>🏟️</b> Pitch Reports</div>
+    </div>
+    <a class="join" id="joinButton" href="https://t.me/+z7_ru1NaYuA2ZmY1">✈ &nbsp; JOIN TELEGRAM CHANNEL</a>
+    <p class="timer">Redirecting you to Telegram in <strong id="count">10</strong> seconds…</p>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <p class="note">Predictions are based on analysis and are not guaranteed. Follow responsibly. If you are not redirected automatically, tap the Join button above.</p>
+  </main>
+  <script>
+    (() => {
+      const target = 'https://t.me/+z7_ru1NaYuA2ZmY1';
+      let remaining = 10;
+      const count = document.getElementById('count');
+      const bar = document.getElementById('bar');
+      document.getElementById('joinButton').href = target;
+      const tick = () => {
+        remaining -= 1;
+        count.textContent = remaining;
+        bar.style.width = ((10 - remaining) * 10) + '%';
+        if (remaining <= 0) { window.location.replace(target); return; }
+        window.setTimeout(tick, 1000);
+      };
+      window.setTimeout(tick, 1000);
+    })();
+  </script>
+</body>
+</html>
